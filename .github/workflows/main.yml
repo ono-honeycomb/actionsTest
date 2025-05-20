@@ -1,7 +1,17 @@
-name: learn-github-actions
-on: [push]
+name: Environment Variables and Secrets # ワークフローの名前
+
+on:
+  push: # pushイベントでトリガー
+    branches: ["main"] # mainブランチへのpush時のみ実行
+
 jobs:
-check-bats-version:
-runs-on: ubuntu-latest
-steps:
-- run: echo "Hello World"
+  example: # ジョブの名前
+    runs-on: ubuntu-latest # Ubuntuの最新環境で実行
+    env: # このジョブ全体で利用できる環境変数を定義
+      MY_VARIABLE: "Hello from environment variable" # MY_VARIABLEという名前の環境変数と値
+    steps: # ジョブ内のステップ（処理の単位）
+      - name: Print environment variable # ステップの名前
+        run: echo "$MY_VARIABLE" # シェルコマンドを実行し、環境変数の値を表示
+      - name: Use secret # ステップの名前
+        run: echo "${{ secrets.MY_SECRET }}" # シェルコマンドを実行し、シークレットの値を表示
+        # secrets.MY_SECRET はGitHubリポジトリの設定で登録したシークレットを参照します
