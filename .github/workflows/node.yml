@@ -9,7 +9,9 @@ jobs:
     runs-on: ubuntu-latest # Ubuntuの最新環境で実行
     steps: # ジョブ内のステップ（処理の単位）
       - name: Move to nodejs directory # ステップの名前
-        run: cd nodejs # nodejsディレクトリに移動
+        run: |
+          ls -la # 現在のディレクトリの内容を表示
+          cd nodejs # nodejsディレクトリに移動
       - name: Checkout code # ステップの名前
         uses: actions/checkout@v2 # コードをチェックアウトするアクションを使用
       - name: Set up Node.js # ステップの名前
