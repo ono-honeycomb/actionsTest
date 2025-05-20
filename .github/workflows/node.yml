@@ -12,7 +12,7 @@ jobs:
         working-directory: ./nodejs # デフォルトの作業ディレクトリをnodejsに設定
     steps: # ジョブ内のステップ（処理の単位）
       - name: Show list # ステップの名前
-        run: ls -l # 現在のディレクトリの内容を表示
+        run: ls -la # シェルコマンドを実行し、ファイルリストを表示
       - name: Checkout code # ステップの名前
         uses: actions/checkout@v2 # コードをチェックアウトするアクションを使用
       - name: Set up Node.js # ステップの名前
