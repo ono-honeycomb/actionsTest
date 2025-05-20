@@ -8,6 +8,8 @@ jobs:
   echoTest: # ジョブの名前
     runs-on: ubuntu-latest # Ubuntuの最新環境で実行
     steps: # ジョブ内のステップ（処理の単位）
+      - name: Move to nodejs directory # ステップの名前
+        run: cd nodejs # nodejsディレクトリに移動
       - name: Checkout code # ステップの名前
         uses: actions/checkout@v2 # コードをチェックアウトするアクションを使用
       - name: Set up Node.js # ステップの名前
@@ -17,4 +19,4 @@ jobs:
       - name: Install dependencies # ステップの名前
         run: npm install # npmで依存関係をインストール
       - name: Run tests # ステップの名前
-        run: npm node/script.js # npmでテストを実行
+        run: npm start # npmでテストを実行
